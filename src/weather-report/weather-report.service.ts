@@ -6,6 +6,7 @@ import { CityCoordsDTO } from 'src/weather-report/dto/cityCoordsDTO';
 export class WeatherReportService {
   constructor(private readonly apiService: ApiService) {}
 
+  // Fetch weather report from the weather API
   async getWeatherReport(city: string, units: string = 'metric') {
     const cityData = await this.getCityCoords(city);
 
@@ -14,6 +15,7 @@ export class WeatherReportService {
     );
   }
 
+  // Fetch city coordinates from the weather API
   private getCityCoords = async (city: string): Promise<CityCoordsDTO> => {
     const data = (
       await this.apiService.fetchWeatherApi<CityCoordsDTO[]>(
